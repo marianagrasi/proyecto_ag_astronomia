@@ -50,6 +50,11 @@ resultados_clf = ejecutar_ag(
     y=y_clf,
     features=features_candidatas
 )
+pd.DataFrame({
+    'generacion': range(1, len(resultados_clf['historial_mejor_fitness']) + 1),
+    'mejor_fitness': resultados_clf['historial_mejor_fitness'],
+    'fitness_promedio': resultados_clf['historial_fitness_promedio']
+}).to_csv('outputs/historial_seleccion.csv', index=False)
 
 mejor_cromosoma_clf = resultados_clf['mejor_solucion']
 mejores_features = [features_candidatas[i] for i, gen in enumerate(mejor_cromosoma_clf) if gen == 1]
@@ -107,6 +112,11 @@ resultados_reg = ejecutar_ag(
     X=X_reg,
     y=y_reg
 )
+pd.DataFrame({
+    'generacion': range(1, len(resultados_reg['historial_mejor_fitness']) + 1),
+    'mejor_fitness': resultados_reg['historial_mejor_fitness'],
+    'fitness_promedio': resultados_reg['historial_fitness_promedio']
+}).to_csv('outputs/historial_hiperparametros.csv', index=False)
 
 mejor_alpha = abs(resultados_reg['mejor_solucion'][0])
 
@@ -161,6 +171,11 @@ resultados_cluster = ejecutar_ag(
     elitismo=True,
     X=pd.DataFrame(X_cluster_scaled, columns=features_cluster)
 )
+pd.DataFrame({
+    'generacion': range(1, len(resultados_cluster['historial_mejor_fitness']) + 1),
+    'mejor_fitness': resultados_cluster['historial_mejor_fitness'],
+    'fitness_promedio': resultados_cluster['historial_fitness_promedio']
+}).to_csv('outputs/historial_clustering.csv', index=False)
 
 mejor_cromosoma_cluster = resultados_cluster['mejor_solucion']
 centroides_ag = mejor_cromosoma_cluster.reshape(3, len(features_cluster))
