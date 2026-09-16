@@ -6,9 +6,6 @@ __pycache__/
 # Ignorar outputs (se generan al ejecutar)
 outputs/
 
-# Ignorar archivos de datos pesados
-data/sdss_sample.csv
-
 # Ignorar configuración de editor
 .vscode/
 .idea/
