@@ -1,6 +1,11 @@
-// Jenkinsfile - pipeline de automatización
+// Jenkinsfile - pipeline de automatización con agente Docker
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.9-slim'
+            args '-u root:root'
+        }
+    }
     
     stages {
         stage('Checkout') {
@@ -12,7 +17,7 @@ pipeline {
         stage('Instalar Dependencias') {
             steps {
                 echo 'Instalando dependencias de Python...'
-                sh 'pip install --user -r requirements.txt'
+                sh 'pip install --no-cache-dir -r requirements.txt'
             }
         }
         
