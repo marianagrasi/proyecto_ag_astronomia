@@ -1,0 +1,18 @@
+# Ignorar archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignorar outputs (se generan al ejecutar)
+outputs/
+
+# Ignorar archivos de datos pesados
+data/sdss_sample.csv
+
+# Ignorar configuración de editor
+.vscode/
+.idea/
+
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
